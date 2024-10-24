@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Apps</title>
+</head>
+<body>
+<!--Echo1-->
+    <form id="form1">
+        <input id="input1" type="text" placeholder="Type something" />
+        <button id="submit1" type="submit">Submit</button>
+        <p id="output1" style="color: red;">Output will appear here</p>
+    </form>
+    <script>
+        document.getElementById("form1").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const inputValue = document.getElementById("input1").value;
+            document.getElementById("output1").textContent = inputValue;
+        });
+    </script>
+
+
+<!--Echo2-->
+    <form>
+        <input id="input" type="text" placeholder="Type something" />
+        <p id="output" style="color: red;">Output will appear here</p>
+    </form>
+    <script>
+        function echo() {
+            const inputValue = document.getElementById("input").value;
+            document.getElementById("output").textContent = inputValue;
+        }
+        
+        document.getElementById("input").addEventListener("input", echo);
+    </script>
+
+
+<!--Array1-->
+	<div>
+		<input type="number" class="input3" placeholder="Num1" />
+		<input type="number" class="input3" placeholder="Num2" />
+		<input type="number" class="input3" placeholder="Num3" />
+		<input type="number" class="input3" placeholder="Num4" />
+		<input type="number" class="input3" placeholder="Num5" />
+	</div>
+	<div>
+		<input type="text" id="sum" disabled placeholder="Sum will appear here" />
+	</div>
+	<script>
+        function updateSum() {
+            const inputBoxes = document.querySelectorAll('.input3');
+            let sum = 0;
+            
+            inputBoxes.forEach(input => {
+                const value = parseFloat(input.value) || 0; 
+                sum += value;
+            });
+            
+            document.getElementById('sum').value = sum; 
+        }
+        document.querySelectorAll('.input3').forEach(input => {
+            input.addEventListener('input', updateSum);
+        });
+	</script>
+</body>
+</html>
+
